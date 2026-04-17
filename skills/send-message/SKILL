@@ -1,0 +1,42 @@
+---
+name: "send-message"
+description: "Use when the user asks to send a message to a specific contact in Lark. The agent should open search, locate the contact, enter the chat window, paste the message content, and send with Enter."
+
+---
+
+# Send Message Skill
+
+Provide robust guidance for message-sending workflows in Lark desktop clients.
+
+## Trigger
+
+Use this skill when the user intent is equivalent to:
+
+- 给 xxx 发消息 yyy
+- 给 xxx 发送 yyy
+- 帮我给 xxx 说 yyy
+
+## Workflow
+
+1. Open global search (`command+k` on macOS / `ctrl+k` on Windows).
+2. Input the contact name in search.
+3. Click the correct contact from search results (exact contact match only).
+4. After contact click succeeds, directly paste the target message content.
+5. Press `enter` to send.
+
+## ReAct constraints
+
+- Make decisions only from the latest screenshot.
+- Never rely on a fixed grid index across rounds.
+- Contact selection must follow this priority:
+  - Prefer the top exact-match contact row in the search result area.
+  - Click the contact avatar/name row, not unrelated rows.
+  - If using grid click, use upper-half click point (`offset_ratio` around `0.22`) to avoid lower rows.
+- After entering the target chat, do not continue clicking coordinates; switch immediately to paste + send.
+- If uncertain whether chat has switched to the target contact, prefer a conservative action (`wait` or re-locate) over sending.
+- Treat accidental send to the wrong chat as highest-risk failure.
+
+## Output expectations
+
+- Planning stage should include explicit steps for search -> contact selection -> message input -> send.
+- ReAct stage should emit one function call per round and re-check UI state before sending.
