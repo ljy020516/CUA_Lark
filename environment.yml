@@ -1,0 +1,29 @@
+name: cua-lark
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - dashscope>=1.25.0
+      - mss>=9.0.1
+      - Pillow>=10.0.0
+      - pyperclip>=1.8.2
+      - python-dotenv>=1.0.0
+      - colorama>=0.4.6
+      # Windows 专用
+      - pywin32>=305; sys_platform == 'win32'
+      - PyAutoGUI>=0.9.54; sys_platform == 'win32'
+      # macOS 专用
+      - pyobjc-core>=10.0; sys_platform == 'darwin'
+      - pyobjc-framework-Quartz>=10.0; sys_platform == 'darwin'
+      - pyobjc-framework-Cocoa>=10.0; sys_platform == 'darwin'
+      # 可选 OCR
+      # - EasyOCR>=1.7.0
+      # 开发依赖
+      - pytest>=7.0.0
+      - pytest-asyncio>=0.21.0
+      - black>=23.0.0
+      - flake8>=6.0.0
+      - mypy>=1.0.0

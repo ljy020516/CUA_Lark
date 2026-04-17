@@ -1,0 +1,27 @@
+# macOS 核心依赖
+dashscope>=1.25.0
+mss>=9.0.1
+Pillow>=10.0.0
+pyperclip>=1.8.2
+python-dotenv>=1.0.0
+colorama>=0.4.6
+
+# macOS 原生框架（通过 pyobjc 访问）
+# 注意：pyobjc 需要预编译 wheel，建议使用 conda 环境
+pyobjc-core>=10.0; python_version < '3.13'
+pyobjc-framework-Quartz>=10.0; python_version < '3.13'
+pyobjc-framework-Cocoa>=10.0; python_version < '3.13'
+# AppKit 模块由 pyobjc-framework-Cocoa 提供，无需单独安装
+
+# 可选 OCR
+# EasyOCR>=1.7.0
+# PaddleOCR>=2.7.0
+
+# 测试
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+
+# 开发
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.0.0

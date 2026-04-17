@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+
+# 环境
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# 截图/日志
+captures/
+*.log
+
+# 技能配置文件（可能含敏感信息）
+skills/*/agents/*.yaml
